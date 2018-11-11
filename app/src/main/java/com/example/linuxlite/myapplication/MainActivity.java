@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Class fragmentClass;
         switch (menuItem.getItemId()){
             case R.id.db:
-                fragmentClass =Dashboard.class;
+                fragmentClass = Dashboard.class;
                 break;
             case R.id.info:
                 fragmentClass = Info.class;
