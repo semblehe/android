@@ -1,5 +1,6 @@
-package com.example.linuxlite.myapplication;
+package com.example.linuxlite.myapplication.model;
 
+import com.example.linuxlite.myapplication.model.KotaModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

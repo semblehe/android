@@ -2,13 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.linuxlite.myapplication.Dashboard">
+    tools:context="com.example.linuxlite.myapplication.fragment.Dashboard">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textSize="60sp"
+    <!--<TextView-->
+        <!--android:textSize="60sp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="Dashboard fragment" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Dashboard fragment" />
-
+        android:scrollbars="vertical"/>
 </FrameLayout>
