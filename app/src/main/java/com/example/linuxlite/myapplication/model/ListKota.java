@@ -14,9 +14,9 @@ public class ListKota {
     @SerializedName("success")
     @Expose
     private Boolean success;
-    @SerializedName("data")
+    @SerializedName("radio")
     @Expose
-    private List<KotaModel> data = null;
+    private List<KotaModel> radio = null;
 
     public Boolean getSuccess() {
         return success;
@@ -27,10 +27,10 @@ public class ListKota {
     }
 
     public List<KotaModel> getData() {
-        return data;
+        return radio;
     }
 
     public void setData(List<KotaModel> data) {
-        this.data = data;
+        this.radio = data;
     }
 }

@@ -1,14 +1,31 @@
 package com.example.linuxlite.myapplication.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.linuxlite.myapplication.R;
+import com.example.linuxlite.myapplication.adapter.DashboardAdapter;
+import com.example.linuxlite.myapplication.model.KotaModel;
+import com.example.linuxlite.myapplication.model.ListKota;
+import com.example.linuxlite.myapplication.service.MyService;
+import com.example.linuxlite.myapplication.utils.Server;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -30,6 +47,13 @@ public class Dashboard extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private SharedPreferences sharedPreferences;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private ProgressDialog progressDialog;
+
 
     public Dashboard() {
         // Required empty public constructor
@@ -66,7 +90,58 @@ public class Dashboard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.my_recycleView);
+
+        progressDialog = new ProgressDialog(getActivity());
+
+        getKota();
+        return view;
+
+    }
+
+    private void getKota() {
+        progressDialog.setTitle("Memuat data");
+        progressDialog.setMessage("Tunggu Sebentar ...");
+        progressDialog.show();
+
+        MyService apiService = Server.getClient().create(MyService.class);
+        Call<ListKota> call = apiService.getKota();
+        call.enqueue(new Callback<ListKota>() {
+            @Override
+            public void onResponse(Call<ListKota> call, Response<ListKota> response) {
+                ListKota listKota = response.body();
+
+                try {
+                    if(listKota.getSuccess() == true){
+                        List<KotaModel> list = listKota.getData();
+
+                        DashboardAdapter dashboardAdapter = new DashboardAdapter(list, getContext());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                        recyclerView.setHasFixedSize(true);
+                        layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(dashboardAdapter);
+                        progressDialog.dismiss();
+                    }else{
+//                        Toast.makeText(getActivity(), listJadwal.getMsg(), Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ListKota> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (progressDialog != null && progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

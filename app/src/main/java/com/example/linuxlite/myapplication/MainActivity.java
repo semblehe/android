@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.linuxlite.myapplication.fragment.Dashboard;
 import com.example.linuxlite.myapplication.fragment.Info;
+import com.example.linuxlite.myapplication.fragment.Setting;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;

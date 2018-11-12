@@ -7,13 +7,13 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Server {
 
-    public static final String URL = "http://sisterdummy.unej.ac.id/mobile/";
+    public static final String URL = "http://alilmu.net/mobile2/";
 
     // base url sister
 //    public static final String URL = "https://mobile-sister.unej.ac.id/mobile/";
 
-    public static final String LOGIN_URL = URL+"login/"; // login url
-    public static final String JADWAL_URL = URL+"jadwal/"; // login url
+//    public static final String LOGIN_URL = URL+"login/"; // login url
+//    public static final String JADWAL_URL = URL+"jadwal/"; // login url
 
     public static Retrofit RETROFIT = null;
     //public static OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();

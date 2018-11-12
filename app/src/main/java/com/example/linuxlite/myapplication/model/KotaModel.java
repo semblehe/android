@@ -8,26 +8,26 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class KotaModel {
-    @SerializedName("idkota")
+    @SerializedName("idradio")
     @Expose
-    private String idkota;
-    @SerializedName("kota")
+    private String idradio;
+    @SerializedName("judul")
     @Expose
-    private String kota;
+    private String judul;
 
     public String getIdkota() {
-        return idkota;
+        return idradio;
     }
 
     public void setIdkota(String idkota) {
-        this.idkota = idkota;
+        this.idradio = idkota;
     }
 
     public String getKota() {
-        return kota;
+        return judul;
     }
 
     public void setKota(String kota) {
-        this.kota = kota;
+        this.judul = kota;
     }
 }
