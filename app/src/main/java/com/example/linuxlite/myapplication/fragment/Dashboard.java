@@ -9,20 +9,30 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linuxlite.myapplication.R;
 import com.example.linuxlite.myapplication.adapter.DashboardAdapter;
 import com.example.linuxlite.myapplication.model.KotaModel;
 import com.example.linuxlite.myapplication.model.ListKota;
+import com.example.linuxlite.myapplication.player.RadioManager;
 import com.example.linuxlite.myapplication.service.MyService;
 import com.example.linuxlite.myapplication.utils.Server;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +63,21 @@ public class Dashboard extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ProgressDialog progressDialog;
+
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
+
+    @BindView(R.id.playTrigger)
+    ImageButton trigger;
+
+    @BindView(R.id.my_recycleView)
+    ListView listView;
+
+    @BindView(R.id.name)
+    TextView textView;
+
+    @BindView(R.id.sub_player)
+    View subPlayer;
 
 
     public Dashboard() {
@@ -177,4 +202,29 @@ public class Dashboard extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+//    @OnClick(R.id.playTrigger)
+//    public void onClicked(){
+//
+//        if(TextUtils.isEmpty(streamURL)) return;
+//
+//        radioManager.playOrPause(streamURL);
+//    }
+//
+//    @OnItemClick(R.id.my_recycleView)
+//    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+//
+//        KotaModel shoutcast = (KotaModel) parent.getItemAtPosition(position);
+//        if(shoutcast == null){
+//
+//            return;
+//
+//        }
+//
+//        textView.setText(shoutcast.getKota());
+//
+//        subPlayer.setVisibility(View.VISIBLE);
+//
+//
+//    }
 }

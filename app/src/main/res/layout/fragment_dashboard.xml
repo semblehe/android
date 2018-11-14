@@ -1,19 +1,85 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<!--tools:context="com.mcakir.radio.MainActivity"-->
+<!--tools:showIn="@layout/activity_main">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.linuxlite.myapplication.fragment.Dashboard">
-
-    <!-- TODO: Update blank fragment layout -->
-    <!--<TextView-->
-        <!--android:textSize="60sp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="Dashboard fragment" />-->
+    android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"/>
-</FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/sub_player"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center|start"
+            android:text="Radio station"
+            android:textSize="20sp"/>
+
+
+        <ImageButton
+            android:id="@+id/playTrigger"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_play_arrow_black"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+
+
+    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.example.linuxlite.myapplication.fragment.Dashboard">-->
+
+    <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:textSize="60sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:text="Dashboard fragment" />&ndash;&gt;-->
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/my_recycleView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:scrollbars="vertical"/>-->
+    <!--<ImageButton-->
+    <!--android:id="@+id/playTrigger"-->
+    <!--android:layout_width="60dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:src="@drawable/ic_play_arrow_black"-->
+    <!--android:background="@null"-->
+    <!--android:backgroundTint="@android:color/transparent"/>-->
+    <!--</FrameLayout>-->

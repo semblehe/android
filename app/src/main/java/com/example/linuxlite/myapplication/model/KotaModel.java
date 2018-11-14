@@ -11,12 +11,21 @@ public class KotaModel {
     @SerializedName("idradio")
     @Expose
     private String idradio;
+
     @SerializedName("judul")
     @Expose
     private String judul;
 
+    @SerializedName("url")
+    @Expose
+    private String url;
+
     public String getIdkota() {
         return idradio;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public void setIdkota(String idkota) {
